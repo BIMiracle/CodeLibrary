@@ -1,0 +1,16 @@
+<script>
+  const { reactive, watchEffect, watch, onMounted } = Vue
+
+  function useFeature () {
+    onMounted(() => console.log("mounted!"))
+  }
+
+  export default {
+    setup (props) {
+      useFeature()
+
+      return {
+      }
+    }
+  }
+</script>

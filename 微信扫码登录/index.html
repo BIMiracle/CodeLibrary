@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #wx_login_container {
+      width: 900px;
+      height: 900px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='wx_login_container'></div>
+  <script src="./index.js"></script>
+  <script>
+    var obj = new WxLogin({
+      // 是否开启新页面展示登录二维码
+      self_redirect: false,
+      // html中要展示二维码的标签id
+      id: 'wx_login_container',
+      // 网站应用的AppID
+      appid: 'wxd9907598e10af4c3',
+      scope: 'snsapi_login',
+      // 回调地址，注意一定要在微信平台下的授权回调域域名下，否则会报redirect_uri错误
+      // 且要用encodeURIComponent()方法转码
+      // 在此我采用的是自己配置一个wxlogin路由页面做中间页面用于请求后端及结果处理
+      // redirect_uri: encodeURIComponent('http://www.fy114.com.cn:8085/dist/#/verification'),
+      redirect_uri: encodeURIComponent('http://www.fy114.com.cn:8085/dist/'),
+      // state参数用于二次检验，可自行设置随机字符串等
+      state: `aisono_${this.s6}_${this.type}_${this.userId}`,
+      // style: 'white',
+      href: 'data:text/css;base64,LnFyY29kZSB7d2lkdGg6IDUwJSAhaW1wb3J0YW50O30KLnRpdGxlIHtkaXNwbGF5OiBub25lO30KLmluZm8ge2Rpc3BsYXk6IG5vbmV9Ci5zdGF0dXNfaWNvbiB7ZGlzcGxheTogbm9uZTt9Ci5zdGF0dXMge3RleHQtYWxpZ246IGNlbnRlcjt9'
+    })
+  </script>
+</body>
+
+</html>

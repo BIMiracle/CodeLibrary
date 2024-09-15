@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+</body>
+
+</html>
+<script>
+  let animal = {
+    _name: "Animal",
+    get name () {
+      return this._name
+    }
+  }
+
+  let animalProxy = new Proxy(animal, {
+    get (target, prop, receiver) {
+      // return Reflect.get(target, prop, receiver)
+      return target[prop]
+    }
+  })
+
+  let dog = {
+    __proto__: animalProxy,
+    _name: "Dog"
+  }
+  console.log(dog.name)
+</script>

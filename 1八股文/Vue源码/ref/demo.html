@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const { createApp, onMounted, ref } = Vue
+
+  createApp({
+    beforeCreate () {
+      console.log(2);
+    },
+    created () {
+      console.log(3);
+    },
+    beforeMount () {
+      console.log(4);
+    },
+    mounted () {
+      console.log(6);
+    },
+    setup () {
+      console.log(1);
+      onMounted(() => {
+        console.log(5);
+      })
+      const message = ref('Hello vue!')
+      return {
+        message
+      }
+    },
+    data () {
+      return {
+        a: 1,
+        b: 2,
+      }
+    },
+    methods () {
+      function a () {
+        console.log('a');
+      }
+      function b () {
+        console.log('b');
+      }
+    },
+    template: `
+    <div>
+      <p>{{message}}</p>
+    </div>
+    `
+  }).mount('#app')
+
+  // const { h, createApp } = Vue
+  // const Stack = {
+  //   render () {
+  //     return h('div', { class: 'stack' }, '')
+  //   }
+  // }
+
+  // const App = {
+  //   components: {
+  //     Stack
+  //   },
+  //   template: `
+  //   <Stack size="4">
+  //   </Stack>
+  //   `
+  // }
+  // createApp(App).mount('#app')
+</script>
+
+</html>

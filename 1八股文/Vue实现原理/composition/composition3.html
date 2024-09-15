@@ -1,0 +1,44 @@
+<script>
+  const { reactive, watchEffect, watch, onMounted } = Vue
+
+  function useFeatureA () {
+    const a = ref(0)
+    const plusOne = computed(() => a.value + 1)
+    function one () { }
+    watchEffect(() => { })
+    return {
+      a,
+      plusOne
+    }
+  }
+  function useFeatureB () {
+    const b = ref(1)
+    function two () { }
+    watchEffect(() => { })
+    return {
+      b,
+    }
+  }
+  function useFeatureC () {
+    const c = ref(1)
+    function three () { }
+    watchEffect(() => { })
+    return {
+      c,
+    }
+  }
+
+  export default {
+    setup () {
+      const { a, plusOne } = useFeatureA()
+      const { b } = useFeatureB()
+      const { c } = useFeatureC()
+      return {
+        a,
+        plusOne,
+        b,
+        c
+      }
+    }
+  }
+</script>

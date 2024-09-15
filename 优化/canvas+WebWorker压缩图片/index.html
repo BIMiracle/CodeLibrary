@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrap {
+      width: 100vw;
+      display: flex;
+    }
+
+    .wrap .image {
+      width: 50%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <input id="fileInput" type="file" accept="image/*">
+  <input id="resizeWidth" type="text" placeholder="最小宽度">
+  <div class="wrap">
+    <div id="imageContainer" class="image"></div>
+    <div id="imageOrigin" class="image"></div>
+  </div>
+  <script src="./index.js"></script>
+</body>
+
+</html>

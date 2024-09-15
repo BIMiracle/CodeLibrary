@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+</body>
+
+</html>
+<script>
+  class User {
+    #name = "Guest";
+    age = 14
+    getName () {
+      return this.#name;
+    }
+  }
+
+  let user = new User();
+
+  user = new Proxy(user, {
+    get (target, prop, receiver) {
+      let value = Reflect.get(...arguments);
+      return typeof value == 'function' ? value.bind(target) : value;
+    }
+  });
+
+  console.log(user.getName()); // Guest
+  console.log(user.age);
+
+</script>

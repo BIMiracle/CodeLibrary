@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .title {
+      margin-top: 20px;
+    }
+
+    .box1 {
+      background-color: aquamarine;
+      margin-bottom: 20px;
+    }
+
+    .box2 {
+      background-color: tomato;
+      margin-top: 30px;
+    }
+
+    .parent {
+      background-color: lightgrey;
+      /* overflow: hidden; */
+      /* border: 1px solid black; */
+      /* position: absolute; */
+      /* float: left; */
+    }
+
+    .child {
+      background-color: lightgreen;
+      margin-top: 20px;
+    }
+
+    .parent2 {
+      /* overflow: hidden; */
+      /* border: 1px solid black; */
+      /* position: absolute; */
+      /* float: left; */
+      background-color: lightcoral;
+    }
+
+    .child2 {
+      height: 100px;
+      margin-bottom: 20px;
+      /* 这里的margin-bottom会突破父元素的底部 */
+      background-color: lightblue;
+    }
+
+    .floated {
+      float: left;
+      width: 100px;
+      height: 100px;
+      background-color: gold;
+    }
+
+    .normal {
+      /* overflow: hidden; */
+      /* float: left; */
+      /* clear: left; */
+      /* display: flow-root; */
+      /* display: inline-block; */
+      width: 200px;
+      height: 50px;
+      background-color: lightcoral;
+      /* 没有清除浮动，所以会被浮动元素覆盖 */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="title">margin合并</div>
+  <div class="box1">第一个盒子</div>
+  <div class="box2">第二个盒子</div>
+
+  <div class="title">margin-top塌陷</div>
+  <div class="parent">
+    <div class="child">子元素</div>
+  </div>
+
+  <div class="title">高度坍塌</div>
+  <div class="parent2">
+    <div class="child2">子元素</div>
+  </div>
+
+  <div class="title">被浮动元素覆盖</div>
+  <div class="floated">浮动元素</div>
+  <div class="normal">正常元素</div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* body {
+      display: flex;
+    } */
+
+    .outer {
+      width: 500px;
+      background-color: gray;
+
+      /* display: flow-root; */
+      /* overflow: auto; */
+      /* display: inline-block; */
+      /* position: absolute; */
+      /* display: table; */
+      /* column-count: 1; */
+      /* float: left; */
+      /* border: 1px solid black; */
+      /* padding: 1px; */
+    }
+
+    .inner {
+      width: 100px;
+      height: 100px;
+      margin: 20px;
+    }
+
+    .box1 {
+      background-color: lightskyblue;
+    }
+
+    .box2 {
+      background-color: lightsalmon;
+    }
+
+    .box3 {
+      background-color: lightgreen;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="outer">
+    <div class="inner box1"></div>
+    <div class="inner box2"></div>
+    <div class="inner box3"></div>
+  </div>
+
+  <div>
+    解决方法
+    <div>1、display flow-root</div>
+    <div>2、overflow 不为visible</div>
+    <div>3、display inline-block</div>
+    <div>4、父元素 display flex</div>
+    <div>5、position absolute或fixed</div>
+    <div>6、display table</div>
+    <div>7、column-count</div>
+    <div>8、float</div>
+  </div>
+</body>
+
+</html>

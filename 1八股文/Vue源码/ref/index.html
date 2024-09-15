@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <button onclick="changeName()">修改数据</button>
+</body>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  // const { reactive, effect } = Vue
+  // const obj = reactive({
+  //   name: 'provens'
+  // })
+  // //响应式数据更新，我们后面再聊
+  // effect(() => {
+  //   document.getElementById("app").innerHTML = obj.name
+  // })
+  // const changeName = () => {
+  //   obj.name = obj.name === "我还是provens 啊" ? '我是修改的数据啊' : '我还是provens 啊'
+  // }
+
+  // for (let [key, value] of activeEffect.deps[0].entries()) {
+  //   console.dir(key)
+  //   console.log(value)
+  // }
+
+  const { ref, effect } = Vue
+
+  const obj = ref({
+    name: '张三'
+  })
+
+  // 调用 effect 方法
+  effect(() => {
+    document.querySelector('#app').innerText = obj.value.name
+  })
+
+  setTimeout(() => {
+    obj.value.name = '李四'
+    obj.value.name = '王五'
+    obj.value.name = '赵六'
+  }, 2000)
+</script>
+
+</html>

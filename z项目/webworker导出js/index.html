@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @keyframes moving-animation {
+      0% {
+        left: 0;
+      }
+
+      100% {
+        left: 90%;
+      }
+    }
+
+    #moving-element {
+      width: 100px;
+      position: relative;
+      animation: moving-animation 4s linear infinite;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="moving-element">I'm moving!</div>
+  <button onclick="exportExcel()">导出</button>
+  <input type="checkbox" id="mainCheck"><label for="mainCheck">在主线程导出</label>
+
+  </checkbox>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>

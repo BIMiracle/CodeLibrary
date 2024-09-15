@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const objParent = { x: 1, y: 2, z: 3 }
+    let obj = Object.create(objParent)
+    obj['a'] = 1
+    Object.defineProperty(obj, 'd', { value: 2, enumerable: false })
+    obj[Symbol('e')] = 3
+
+
+    for (let key in obj) {
+      console.log(key) // a、x、y、z
+    }
+    console.log(Object.keys(obj)) // a
+    console.log(Object.getOwnPropertyNames(obj)) // ['a', 'd']
+    console.log(Reflect.ownKeys(obj)) // ['a', 'd', Symbol(e)]
+
+    console.log('----------');
+
+    // 遍历对象的键
+    for (let key of Object.keys(obj)) {
+      console.log(key);
+    }
+
+    // 遍历对象的值
+    for (let value of Object.values(obj)) {
+      console.log(value);
+    }
+
+    // 遍历对象的键和值
+    for (let [key, value] of Object.entries(obj)) {
+      console.log(`Key: ${key} Value: ${value}`);
+    }
+  </script>
+</body>
+
+</html>

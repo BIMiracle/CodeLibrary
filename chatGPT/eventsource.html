@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Real-time Chat with OpenAI GPT-3</title>
+</head>
+
+<body>
+	<h1>Real-time Chat with OpenAI GPT-3</h1>
+
+	<div id="chat-box"></div>
+
+	<form id="chat-form">
+		<label for="user-input">User:</label>
+		<input type="text" id="user-input" name="user-input">
+		<button type="submit">Send</button>
+	</form>
+
+	<script>
+		const chatBox = document.getElementById('chat-box');
+		const chatForm = document.getElementById('chat-form');
+		const userInput = document.getElementById('user-input');
+		const apiKey = 'sk-n4XXXXXXXXXX';
+
+		const eventSource = new EventSource('https://api.openai.com/v1/chat/completions', {
+			withCredentials: true,
+			headers: {
+				'Authorization': 'Bearer ' + apiKey,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				model: 'gpt-3.5-turbo',
+				prompt: '',
+				temperature: 0.7,
+				max_tokens: 60,
+				n: 1,
+				stream: true
+			})
+		});
+
+		eventSource.onmessage = function(event) {
+			const response = JSON.parse(event.data).choices[0].text;
+			const chatMessage = document.createElement('p');
+			chatMessage.textContent = response;
+			chatBox.appendChild(chatMessage);
+		};
+
+		chatForm.addEventListener('submit', function(event) {
+			event.preventDefault();
+			const userMessage = userInput.value;
+			const chatMessage = document.createElement('p');
+			chatMessage.textContent = `User: ${userMessage}`;
+			chatBox.appendChild(chatMessage);
+			userInput.value = '';
+			eventSource.send(JSON.stringify({
+				prompt: userMessage,
+				temperature: 0.7,
+				max_tokens: 60,
+				n: 1
+			}));
+		});
+	</script>
+</body>
+
+</html>

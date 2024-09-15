@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const obj = {
+      a: 1,
+      b: 2,
+      c: {
+        d1: 3,
+        d2: 4
+      },
+      [Symbol("e")]: 5
+    }
+    Reflect.deleteProperty(obj, 'a') // delete obj.a
+    console.log(obj);
+    console.log(Reflect.get(obj, 'b')); // obj['b']
+    console.log(Reflect.set(obj, 'a', '2')); // obj['a'] = 2
+    console.log(Reflect.getPrototypeOf(obj) === Object.prototype); // Object.getPrototypeOf(obj)
+    console.log(Reflect.has(obj, 'toString')); // in
+    console.log(Reflect.ownKeys(obj)); // Object.getOwnPropertyNames() + Object.getOwnPropertySymbols()
+
+  </script>
+</body>
+
+</html>

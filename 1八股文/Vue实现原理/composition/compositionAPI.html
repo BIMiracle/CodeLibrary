@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <div id="app"></div>
+
+  <script>
+    const { createApp, h, ref, onMounted, onUnmounted } = Vue
+    function useMouse () {
+      const x = ref(0)
+      const y = ref(0)
+
+      const update = e => {
+        x.value = e.pageX
+        y.value = e.pageY
+      }
+      onMounted(() => {
+        window.addEventListener('mousemove', update)
+      })
+      onUnmounted(() => {
+        windows.removeEventListener('mousemove', update)
+      })
+      return { x, y }
+    }
+    const App = {
+      setup () {
+        const { x, y } = useMouse()
+        const foo = ref('foo')
+        return {
+          x,
+          y,
+          foo,
+        }
+      },
+      template: `{{x}} {{y}} {{foo}}`,
+    }
+    createApp(App).mount('#app')
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <div id="app">
+  </div>
+
+  <script>
+    const { createApp, ref, watchEffect, toRef } = Vue
+    function usePost (getId, getA) {
+      console.log('usePost', getId());
+      return useFetch(() => `https://jsonplaceholder.typicode.com/todos/${getId()}`, () => getA())
+    }
+    function useFetch (getUrl, getA) {
+      const data = ref(null)
+      const error = ref(null)
+      const isPending = ref(true)
+      watchEffect(() => {
+        console.log(getA())
+        console.log(getUrl())
+        // console.log(data.value); 这里不能调用否则会递归
+        data.value = null
+        error.value = null
+        isPending.value = true
+        fetch(getUrl())
+          .then(res => res.json())
+          .then(_data => {
+            data.value = _data
+            console.log(data.value); // 这里可以调用
+            isPending.value = false
+          })
+          .catch(err => {
+            error.value = err
+            isPending.value = false
+          })
+      })
+      return {
+        data,
+        error,
+        isPending
+      }
+    }
+    const Post = {
+      props: ['id', 'a'],
+      setup (props) {
+        console.log('props', props.id);
+        const { data, error, isPending } = usePost(() => props.id, () => props.a)
+        const foo = ref('foo')
+        return {
+          data,
+          error,
+          isPending,
+        }
+      },
+      template: `
+      <div v-if="isPending">loading...</div>
+      <div v-else-if="data">{{ data }}</div>
+      <div v-else-if="error">Error: {{ error.message }}</div>
+      `
+    }
+    const App = {
+      components: { Post },
+      data () {
+        return {
+          id: 1,
+          a: 1,
+        }
+      },
+      template: `
+      <button @click="id++">change ID</button>
+      <button @click="a++">change a</button>
+      <Post :id="id" :a="a"/>
+      `
+    }
+    createApp(App).mount('#app')
+  </script>
+</body>
+
+</html>

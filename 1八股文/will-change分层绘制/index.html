@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .d1 {
+      z-index: 1;
+      background-color: lightblue;
+      /* will-change: opacity; 不建议对没有经常变动的属性使用will-change */
+    }
+
+    .d2 {
+      z-index: 2;
+      background-color: lightblue;
+      opacity: 0.9;
+      will-change: opacity;
+    }
+
+    .d3 {
+      z-index: 3;
+      background-color: lightblue;
+      transform: rotate(180deg);
+      will-change: transform;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="d1">larem</div>
+  <div class="d2">111</div>
+  <div class="d3">111</div>
+  <div>
+    <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis recusandae natus rerum harum ratione quisquam,
+      saepe hic voluptate inventore autem praesentium! Nulla qui, reiciendis quaerat ipsam architecto optio quam veniam!
+    </div>
+    <div>Placeat ipsum veniam accusamus? Corrupti reprehenderit rem, sint nemo voluptatibus repudiandae explicabo quod
+      est culpa porro delectus fugiat voluptatum earum. Fugit quis praesentium odio repellendus sint nemo impedit neque
+      perspiciatis.</div>
+    <div>Nulla hic molestias, ipsam laboriosam laudantium vero excepturi consequuntur enim! Aut illo perspiciatis nemo
+      sequi, cum ipsa porro modi vitae dolore quam eos nobis est deserunt, fugiat quo? Delectus, quos!</div>
+    <div>Eaque quidem fugiat dolor quasi in impedit explicabo incidunt ipsam, dolores ducimus pariatur perferendis vitae
+      aliquid ab hic recusandae veniam dicta maiores, consequuntur aspernatur fuga et distinctio quisquam. Assumenda,
+      illo.</div>
+    <div>Iste aspernatur ullam dolores blanditiis vitae ea quo doloremque numquam praesentium veniam nihil quaerat
+      magnam voluptate tempora, quas libero ipsam, voluptatibus deserunt accusamus saepe at natus tempore dolorem illo?
+      Obcaecati?</div>
+  </div>
+</body>
+
+</html>

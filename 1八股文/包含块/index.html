@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .p1 {
+      width: 500px;
+      height: 40px;
+      margin: 10px;
+      border: 2px solid #000;
+      padding: 10px;
+      background-color: lightblue;
+    }
+
+    .p2 {
+      width: 50%;
+      height: 50%;
+      background-color: lightcoral;
+    }
+
+    .p3 {
+      width: 500px;
+      height: 60px;
+      margin: 10px;
+      border: 2px solid #000;
+      padding: 10px;
+      position: relative;
+    }
+
+    .p4 {
+      width: 50%;
+      height: 50%;
+      background-color: lightcoral;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+    }
+
+    .p5 {
+      width: 500px;
+      height: 60px;
+      margin: 10px;
+      border: 2px solid #000;
+      padding: 10px;
+      background-color: lightblue;
+    }
+
+    .p6 {
+      width: 50%;
+      height: 50%;
+      background-color: lightcoral;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    .p8 {
+      width: 500px;
+      height: 60px;
+      margin: 10px;
+      border: 2px solid #000;
+      padding: 10px;
+      background-color: lightblue;
+    }
+
+    .p9 {
+      width: 40%;
+      height: 40%;
+      background-color: lightgreen;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+    }
+
+    .p10 {
+      width: 500px;
+      height: 60px;
+      margin: 10px;
+      border: 2px solid #000;
+      padding: 10px;
+      background-color: lightblue;
+      overflow: auto;
+    }
+
+    .p11 {
+      width: 40%;
+      height: 40%;
+      background-color: lightgreen;
+      position: sticky;
+      top: 10px;
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="p1">
+    非定位元素 包含块是最近的块级祖先元素的内容区域
+    <div class="p2"></div>
+  </div>
+
+  <div class="p3">
+    绝对定位元素absolute 包含块是最近的祖先中position属性值是非static（relative、absolute、fixed、sticky）元素的padding区域
+    <div class="p4"></div>
+  </div>
+  <div class="p5">
+    绝对定位元素absolute 没有定位的祖先元素时就是 根元素 html 的视口（viewport）
+    <div class="p6">绝对定位元素absolute 没有定位的祖先元素</div>
+  </div>
+
+  <div class="p8">
+    固定定位元素fixed 包含块是视口（viewport）
+    <div class="p9">固定定位元素fixed</div>
+  </div>
+
+  <div class="p10">
+    粘性定位元素sticky 包含块和非定位元素一样 是最近的块级祖先元素的内容区域
+    <div class="p11"></div>
+    <div>
+      <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium temporibus expedita aut molestias,
+        corrupti iste veniam iusto, eveniet odio quo, voluptatum recusandae corporis maiores. Earum dolore porro quas
+        nesciunt praesentium.</div>
+      <div>Deserunt quis itaque eius illum placeat dignissimos in quidem quibusdam sequi earum necessitatibus rem odit
+        sunt reprehenderit ab dolores, est neque unde quae distinctio quas officiis modi inventore amet. Porro?</div>
+      <div>Qui voluptatum dolores ullam porro quos distinctio deleniti facere necessitatibus iste et sit, praesentium
+        obcaecati nihil perferendis harum labore eaque saepe corporis aspernatur iusto hic laudantium soluta. Ut, nam
+        aliquid!</div>
+    </div>
+  </div>
+
+</body>
+
+</html>
